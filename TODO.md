@@ -1,0 +1,4 @@
+- [x] Update form element in index.html: remove action and method attributes
+- [ ] Add JavaScript script tag before closing body
+- [ ] Implement form submission handler: prevent default, collect data (including checkboxes), send POST to http://localhost:3333/api/anamnese
+- [ ] Add success/error feedback to user

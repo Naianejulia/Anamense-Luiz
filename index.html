@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./img/icon.png">
+  <title>Ficha de Anamnese - Luiz Felipe Personal Trainer</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+i, .fa, .fas, .far, .fal, .fab {
+  color: inherit !important;
+}
+
+:root {
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+
+  --text-dark: #111827;
+  --text-medium: #374151;
+  --text-light: #6b7280;
+
+  --bg-page: #f5f7fb;
+  --bg-card: #ffffff;
+
+  --border-color: #e5e7eb;
+
+  --shadow-sm: 0 2px 6px rgba(0,0,0,.05);
+  --shadow-md: 0 8px 24px rgba(0,0,0,.08);
+
+  --radius: 18px;
+  --transition: all .25s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-dark);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  background: transparent;
+}
+
+/* HEADER */
+.header {
+  background: linear-gradient(
+    160deg,
+    #0f172a 0%,
+    #1e293b 60%,
+    #0b1220 100%
+  );
+  padding: 64px 24px 72px;
+  text-align: center;
+  border-radius: 28px;
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 28px;
+}
+
+.logo {
+  max-width: 180px;
+  padding: 22px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  border-radius: 24px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.35);
+}
+
+.header h1 {
+  margin-top: 32px;
+  color: #f8fafc;
+  font-size: 1.9rem;
+  font-weight: 700;
+}
+
+.header p {
+  color: var(--text-light);
+  margin-top: 8px;
+}
+
+/* FORM */
+.form-wrapper {
+  padding: 0;
+}
+
+/* SECTION */
+.section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin: 40px 0 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--text-dark);
+}
+
+.section-title i {
+  color: var(--primary) !important;
+}
+
+/* GRID */
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  background: var(--bg-card);
+  padding: 28px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 24px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+label {
+  font-size: .9rem;
+  font-weight: 500;
+  color: var(--text-medium);
+  margin-bottom: 6px;
+}
+
+/* INPUTS */
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 14px 14px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-color);
+  font-size: .95rem;
+  font-family: 'Poppins', sans-serif;
+  background: #fff;
+  transition: var(--transition);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #9ca3af;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(37,99,235,.15);
+}
+
+/* OPTIONS */
+.options-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.option-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.option-item:hover {
+  border-color: #94a3b8;
+  background: #f8fafc;
+}
+
+.option-item input[type="checkbox"],
+.option-item input[type="radio"] {
+  width: 22px;
+  height: 22px;
+  accent-color: #2563eb; /* azul elegante */
+  cursor: pointer;
+}
+
+.option-item label {
+  margin: 0;
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #0f172a;
+  cursor: pointer;
+}
+
+/* SUBMIT */
+.submit-container {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.submit-btn {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 16px 56px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  transition: var(--transition);
+  box-shadow: 0 12px 26px rgba(37,99,235,.25);
+}
+
+.submit-btn:hover {
+  background: var(--primary-hover);
+  transform: translateY(-2px);
+}
+
+/* FOOTER */
+footer {
+  background: transparent;
+  margin-top: 40px;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 16px;
+}
+
+.social-link {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-dark);
+  font-size: 1.3rem;
+  transition: var(--transition);
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary);
+}
+
+.footer-text {
+  font-size: .9rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  body { padding: 12px; }
+  .form-grid { padding: 20px; }
+  .submit-btn { width: 100%; justify-content: center; }
+}
+</style>
+</head>
+
+<body>
+  <div class="container">
+    <!-- Header -->
+    <div class="header">
+      <div class="logo-container">
+        <img src="./img/logo-luiz-felipe.png" alt="Luiz Felipe Personal Trainer" class="logo">
+      </div>
+      <h1>Ficha de Anamnese</h1>
+    </div>
+
+    <!-- Form -->
+    <div class="form-wrapper">
+
+      <!-- ✅ FORMSPREE (trocado) -->
+      <form action="https://formspree.io/f/mlgblnbw" method="POST">
+        <!-- ✅ Config do e-mail -->
+        <input type="hidden" name="_subject" value="📋 Nova ficha de anamnese - Luiz Felipe">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_language" value="pt">
+        <input type="hidden" name="_redirect" value="obrigado.html">
+
+        <!-- Dados Pessoais -->
+        <div class="section-title">
+          <i class="fas fa-user"></i>
+          Dados Pessoais
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group full-width">
+            <label><i class="fas fa-id-card"></i> Nome completo *</label>
+            <input type="text" name="nome" required placeholder="Digite seu nome completo">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-calendar"></i> Data de nascimento *</label>
+            <input type="date" name="nascimento" required>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-hashtag"></i> Idade *</label>
+            <input type="number" name="idade" required placeholder="Ex: 25" min="1" max="120">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-envelope"></i> Email</label>
+            <input type="email" name="email" placeholder="seu@email.com">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-weight"></i> Peso atual (kg)</label>
+            <input type="number" name="peso" step="0.1" placeholder="Ex: 75.5" min="1">
+          </div>
+        </div>
+
+        <!-- Objetivos -->
+        <div class="section-title">
+          <i class="fas fa-bullseye"></i>
+          Objetivos
+        </div>
+
+        <div class="form-group full-width">
+          <label>Selecione seus objetivos principais:</label>
+          <div class="options-grid">
+            <div class="option-item">
+              <input type="checkbox" name="objetivo" value="Hipertrofia" id="obj1">
+              <label for="obj1">Hipertrofia</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="objetivo" value="Emagrecimento" id="obj2">
+              <label for="obj2">Emagrecimento</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="objetivo" value="Condicionamento" id="obj3">
+              <label for="obj3">Condicionamento</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="objetivo" value="Fortalecimento" id="obj4">
+              <label for="obj4">Fortalecimento</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="objetivo" value="Reabilitação" id="obj5">
+              <label for="obj5">Reabilitação</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label><i class="fas fa-plus"></i> Outros objetivos</label>
+          <input type="text" name="objetivo_outros" placeholder="Descreva outros objetivos específicos">
+        </div>
+
+        <!-- Histórico de Atividades -->
+        <div class="section-title">
+          <i class="fas fa-dumbbell"></i>
+          Histórico de Atividades Físicas
+        </div>
+
+        <div class="form-group full-width">
+          <label>Já praticou atividade física anteriormente?</label>
+          <div class="options-grid">
+            <div class="option-item">
+              <input type="radio" name="atividade" value="Sim" id="ativ1">
+              <label for="ativ1">Sim</label>
+            </div>
+            <div class="option-item">
+              <input type="radio" name="atividade" value="Não" id="ativ2">
+              <label for="ativ2">Não</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-running"></i> Quais atividades?</label>
+            <input type="text" name="atividade_quais" placeholder="Ex: Musculação, corrida, natação">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-clock"></i> Por quanto tempo?</label>
+            <input type="text" name="atividade_tempo" placeholder="Ex: 6 meses, 2 anos">
+          </div>
+        </div>
+
+        <!-- Planejamento de Treino -->
+        <div class="section-title">
+          <i class="fas fa-calendar-check"></i>
+          Planejamento de Treino
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-hourglass-half"></i> Prazo para alcançar objetivos</label>
+            <input type="text" name="tempo_treino" placeholder="Ex: 3 meses, 6 meses, 1 ano">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-calendar-week"></i> Frequência semanal de treinos</label>
+            <select name="frequencia">
+              <option value="">Selecione</option>
+              <option value="3">3x por semana</option>
+              <option value="4">4x por semana</option>
+              <option value="5">5x por semana</option>
+              <option value="6">6x por semana</option>
+              <option value="7">7x por semana</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-clock"></i> Tempo estimativo por treino</label>
+            <input type="text" name="tempo_estimativo_treino" placeholder="Ex: 30’, 1hora">
+          </div>
+        </div>
+
+        <!-- Saúde e Condições Médicas -->
+        <div class="section-title">
+          <i class="fas fa-heartbeat"></i>
+          Saúde e Condições Médicas
+        </div>
+
+        <div class="form-group full-width">
+          <label><i class="fas fa-pills"></i> Toma algum medicamento contínuo?</label>
+          <input type="text" name="remedio" placeholder="Se sim, qual(is)?">
+        </div>
+
+        <div class="form-group full-width">
+          <label>Possui alguma condição de saúde?</label>
+          <div class="options-grid">
+            <div class="option-item">
+              <input type="checkbox" name="doenca" value="Hipertensão" id="doenca1">
+              <label for="doenca1">Hipertensão</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="doenca" value="Diabetes" id="doenca2">
+              <label for="doenca2">Diabetes</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="doenca" value="Cardíaco" id="doenca3">
+              <label for="doenca3">Problemas cardíacos</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="doenca" value="Respiratório" id="doenca4">
+              <label for="doenca4">Problemas respiratórios</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="doenca" value="Hérnia" id="doenca5">
+              <label for="doenca5">Hérnia</label>
+            </div>
+            <div class="option-item">
+              <input type="checkbox" name="doenca" value="Articular" id="doenca6">
+              <label for="doenca6">Problemas articulares</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-grid">
+          <div class="form-group">
+            <label><i class="fas fa-map-marker-alt"></i> Local da hérnia (se aplicável)</label>
+            <input type="text" name="hernia_local" placeholder="Ex: Lombar, cervical">
+          </div>
+
+          <div class="form-group">
+            <label><i class="fas fa-map-marker-alt"></i> Local dos problemas articulares (se aplicável)</label>
+            <input type="text" name="articular_local" placeholder="Ex: Joelho, ombro">
+          </div>
+        </div>
+
+        <div class="form-group full-width">
+          <label><i class="fas fa-comment-medical"></i> Observações adicionais</label>
+          <textarea name="observacoes" placeholder="Alguma informação adicional que considere importante para seu treino?"></textarea>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="submit-container">
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+            Enviar Ficha de Anamnese
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <div class="social-icons">
+        <a href="https://www.instagram.com/luizfelipe.personal" target="_blank" class="social-link" title="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/5581995088589" target="_blank" class="social-link" title="WhatsApp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </div>
+      <p class="footer-text">
+        <strong>@luizfelipe.personal</strong> | Contato: <strong>(81) 99508-8589</strong>
+      </p>
+      <p class="footer-text" style="margin-top: 10px; font-size: 0.85rem;">
+        © 2025 Site desenvolvido por Naiane Barbosa - Desenvolvedora Web
+        <br>
+        <img src="./img/Nai - Dev - Logo (1).png" alt="Naiane Barbosa - Desenvolvedora Web" style="height: 70px; width: auto;" />
+      </p>
+    </footer>
+  </div>
+</body>
+</html>
+
