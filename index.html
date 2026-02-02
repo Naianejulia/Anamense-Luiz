@@ -281,11 +281,64 @@ footer {
   font-size: .9rem;
 }
 
+/* MODAL */
+.modal-obrigado {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
+}
+
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 500px;
+  background: #111;
+  padding: 50px 30px;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  color: #fff;
+}
+
+.modal-content h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.modal-content p {
+  color: #ccc;
+  margin-bottom: 30px;
+}
+
+.btn-nova-anamnese {
+  display: inline-block;
+  padding: 14px 36px;
+  background: #fff;
+  color: #000;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-nova-anamnese:hover {
+  background: #f0f0f0;
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
   body { padding: 12px; }
   .form-grid { padding: 20px; }
   .submit-btn { width: 100%; justify-content: center; }
+  .modal-content { padding: 30px 20px; }
 }
 </style>
 </head>
@@ -298,18 +351,18 @@ footer {
         <img src="./img/logo-reab-removebg-preview.png" alt="Luiz Felipe Personal Trainer" class="logo">
       </div>
       <h1>Ficha de Anamnese</h1>
+      <p> Luiz Felipe - CREF 023708-G/PE</p>
     </div>
 
     <!-- Form -->
     <div class="form-wrapper">
 
       <!-- ✅ FORMSPREE (trocado) -->
-      <form action="https://formspree.io/f/mlgblnbw" method="POST">
+      <form id="form" action="https://formspree.io/f/mlgblnbw" method="POST">
         <!-- ✅ Config do e-mail -->
         <input type="hidden" name="_subject" value="📋 Nova ficha de anamnese - Luiz Felipe">
         <input type="hidden" name="_template" value="table">
         <input type="hidden" name="_language" value="pt">
-        <input type="hidden" name="_redirect" value="obrigado.html">
 
         <!-- Dados Pessoais -->
         <div class="section-title">
@@ -531,6 +584,51 @@ footer {
       </p>
     </footer>
   </div>
+
+  <!-- Modal de Obrigado -->
+  <div id="modal-obrigado" class="modal-obrigado">
+    <div class="modal-content">
+      <h1>Obrigado!</h1>
+      <p>Sua ficha de anamnese foi enviada com sucesso.<br>
+      Em breve entraremos em contato.</p>
+      <a href="index.html" class="btn-nova-anamnese">Nova Anamnese</a>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('form').addEventListener('submit', function(e) {
+      e.preventDefault(); // Prevent default form submission
+
+      const formData = new FormData(this);
+
+      fetch(this.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          // Show modal on success
+          document.getElementById('modal-obrigado').style.display = 'block';
+        } else {
+          alert('Erro ao enviar o formulário. Tente novamente.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('Erro ao enviar o formulário. Tente novamente.');
+      });
+    });
+
+    // Close modal when clicking outside or on the button
+    document.getElementById('modal-obrigado').addEventListener('click', function(e) {
+      if (e.target === this || e.target.classList.contains('btn-nova-anamnese')) {
+        this.style.display = 'none';
+      }
+    });
+  </script>
 </body>
 </html>
 
